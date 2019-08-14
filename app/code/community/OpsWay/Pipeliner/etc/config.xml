@@ -2,7 +2,7 @@
 <config>
     <modules>
         <OpsWay_Pipeliner>
-            <version>1.0.1</version>
+            <version>1.0.4</version>
             <depends>
                 <!-- no dependencies -->
             </depends>
@@ -72,40 +72,36 @@
                     <use>core_read</use>
                 </connection>
             </add_product_attribute_read>
+            <add_customer_attribute>
+                <setup>
+                    <module>OpsWay_Pipeliner</module>
+                    <class>Mage_Customer_Model_Entity_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </add_customer_attribute>
+            <add_customer_attribute_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </add_customer_attribute_write>
+            <add_customer_attribute_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </add_customer_attribute_read>
         </resources>
         <events>
-            <catalog_category_save_before>
+            <model_save_before>
                 <observers>
                     <pipeliner_events>
+                        <type>singleton</type>
                         <class>OpsWay_Pipeliner_Model_Observer</class>
-                        <method>saveCatalogCategoryBefore</method>
+                        <method>modelSaveAfter</method>
                     </pipeliner_events>
                 </observers>
-            </catalog_category_save_before>
-            <catalog_product_save_before>>
-                <observers>
-                    <pipeliner_events>
-                        <class>OpsWay_Pipeliner_Model_Observer</class>
-                        <method>saveCatalogProductBefore</method>
-                    </pipeliner_events>
-                </observers>
-            </catalog_product_save_before>>
-            <customer_save_commit_after>
-                <observers>
-                    <pipeliner_events>
-                        <class>OpsWay_Pipeliner_Model_Observer</class>
-                        <method>saveCustomerAfterCommit</method>
-                    </pipeliner_events>
-                </observers>
-            </customer_save_commit_after>
-            <sales_order_save_after>
-                <observers>
-                    <pipeliner_events>
-                        <class>OpsWay_Pipeliner_Model_Observer</class>
-                        <method>saveOrderAfterCommit</method>
-                    </pipeliner_events>
-                </observers>
-            </sales_order_save_after>
+            </model_save_before>
         </events>
     </global>
     <crontab>
