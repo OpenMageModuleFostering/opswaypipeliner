@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/opswaypipeliner",
+    "name": "OpenMageModuleFostering\/opswaypipeliner",
     "type": "magento-module",
     "license": "GPL",
     "homepage": "",
     "description": "Extension allow synchronizing data bidirectional between Magento stores and PipelinerCRM system. ",
     "authors": [
-    {
-        "name": "OpsWay",
-        "email": "support@opsway.com"
-    }
-],
+        {
+            "name": "OpsWay",
+            "email": "support@opsway.com"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
